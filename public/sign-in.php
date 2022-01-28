@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require $_SERVER["DOCUMENT_ROOT"] . "\hidden\classes\Database.php";
-    require $_SERVER["DOCUMENT_ROOT"] . "\hidden\classes\Validator.php";
+    require $_SERVER["DOCUMENT_ROOT"] . "/hidden/classes/Database.php";
+    require $_SERVER["DOCUMENT_ROOT"] . "/hidden/classes/Validator.php";
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

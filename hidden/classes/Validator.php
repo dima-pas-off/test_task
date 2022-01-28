@@ -9,6 +9,7 @@
     {   
         foreach($form as &$field) {
             $field = str_replace(" ", "", $field);
+            $field = htmlspecialchars($field);
         }
         unset($field);
 
@@ -118,7 +119,7 @@
     }
 
 
-    public function formSignUpValidation() {
+    public function formSignUpValidation($database) {
 
         $this->checkForMinLengthField("login", $this->form["login"], 6);
         $this->checkForMinLengthField("password", $this->form["password"], 6);
@@ -133,9 +134,9 @@
         }
 
         if(count($this->arrayErrors) === 0) {
-            $this->loginUniquenessCheck(new Database("../hidden/database.json"));
-            $this->checkEmailValidation(new Database("../hidden/database.json"));
-            $this->emailUniquenessCheck(new Database("../hidden/database.json"));
+            $this->loginUniquenessCheck($database);
+            $this->checkEmailValidation($database);
+            $this->emailUniquenessCheck($database);
         }
 
         return count($this->arrayErrors) === 0;

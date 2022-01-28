@@ -29,7 +29,7 @@
             <div class="title_form">
                 <h1>Sign In</h1>
             </div>
-            <form id="form" action="sign-in.php" method="POST">
+            <form id="form">
                 <div class="input_login">
                     <input name="login" type="text" id="login" placeholder="Login">
                 </div>
@@ -46,8 +46,6 @@
         </div>';
     }
         ?>
-        <script src="public/assets/js/create-error-element.js"></script>
-        <script src="public/assets/js/send-form-sign-in-handler.js"></script>
 </body>
 </body>
 </html>
