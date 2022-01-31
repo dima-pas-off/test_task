@@ -8,28 +8,29 @@
     <title>Sign In</title>
 </head>
 <body>
+
 <?php
     session_start();
-    if(isset($_SESSION["login"])) {
-        echo '<div class="header">
-                <div class="info">
-                    <p>Hello ' . $_COOKIE["login"] . '</p>
-                </div>
-                <div class="exit">
-                    <p><a href="public/logout.php">Exit</a></p>
-                </div>
-             </div>';       
-    }   
+?>
 
 
-    if(!isset($_SESSION["login"])) {
-        echo '
+ <?php if(isset($_SESSION["login"])): ?>   
+         <div class="header">
+            <div class="info">
+                <p>Hello <?php echo $_SESSION["login"] ?></p>
+            </div>
+            <div class="exit">
+                <p><a href="public/logout.php">Exit</a></p>
+            </div>
+        </div>            
+
+<?php else: ?>
     <div class="wrapper">
         <div class="form-wrapper">
             <div class="title_form">
                 <h1>Sign In</h1>
             </div>
-            <form id="form">
+            <form id="form" action="#">
                 <div class="input_login">
                     <input name="login" type="text" id="login" placeholder="Login">
                 </div>
@@ -38,14 +39,16 @@
                 </div>
 
                 <div class="submit_button">
-                    <button type="submit">
+                    <button type="button" class="submit">
                         Sign In
                     </button>
                 </div>
             </form>
-        </div>';
-    }
-        ?>
+        </div>
+<?php endif ?>
+
+        <script src="public/assets/js/create-error-element.js"></script>
+        <script src='public/assets/js/send-form-sign-in-handler.js'></script>
 </body>
 </body>
 </html>

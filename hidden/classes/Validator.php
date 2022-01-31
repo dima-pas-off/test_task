@@ -17,12 +17,15 @@
     }
 
 
-    private function checkForExpression($keyField, $valueField, $pattern) {
-        if(!preg_match($pattern, $valueField)) {
-            $this->arrayErrors[] = [
-                "inputName" => $keyField,
-                "description" => "preg"
-            ];
+    private function checkForExpression($keyField, $valueField, ...$patterns) {
+        foreach($patterns as $pattern) {
+            if(!preg_match($pattern, $valueField)) {
+                $this->arrayErrors[] = [
+                    "inputName" => $keyField,
+                    "description" => "preg"
+                ];
+                return;
+            }
         }
     }
 
@@ -115,7 +118,7 @@
 
         $this->checkForMinLengthField("login", $this->form["login"], 6);
         $this->checkForMinLengthField("password", $this->form["password"], 6);
-        $this->checkForExpression("password", $this->form["password"], "/(?=.*\d)(?=.*[a-z])/i");
+        $this->checkForExpression("password", $this->form["password"],"/^[a-zA-Z0-9]+$/", "/(?=.*\d)(?=.*[a-z])/i");
     }
 
 
@@ -123,7 +126,7 @@
 
         $this->checkForMinLengthField("login", $this->form["login"], 6);
         $this->checkForMinLengthField("password", $this->form["password"], 6);
-        $this->checkForExpression("password", $this->form["password"], "/(?=.*\d)(?=.*[a-z])/i");
+        $this->checkForExpression("password", $this->form["password"], "/^[a-zA-Z0-9]+$/", "/(?=.*\d)(?=.*[a-z])/i");
         $this->checkForPasswordParity();
         $this->checkEmailValidation();
         $this->checkForExpression("name", $this->form["name"], "/^[a-z]{2}$/i");

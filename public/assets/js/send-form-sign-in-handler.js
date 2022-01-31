@@ -1,9 +1,11 @@
 const form = document.getElementById("form");
 const inputLogin = document.querySelector(".input_login");
 const inputPassword = document.querySelector(".input_password");
-
+const buttonSubmit = document.querySelector(".submit");
 
 if(form) {
+    
+    buttonSubmit.type = "submit";
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 

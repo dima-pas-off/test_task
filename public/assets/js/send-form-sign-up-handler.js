@@ -4,8 +4,10 @@ const inputPassword = document.querySelector(".input_password");
 const inputName = document.querySelector(".input_name");
 const inputEmail = document.querySelector(".input_email");
 const inputConfirmPassword = document.querySelector(".input_confirm_password")
+const buttonSubmit = document.querySelector(".submit");
 
 if(form) {
+    buttonSubmit.type = "submit";
     form.addEventListener("submit", (event) => {
         event.preventDefault();
         let errors = document.querySelectorAll("div p");
